@@ -1,6 +1,10 @@
 /* Google Fonts Import */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+
+
+
+
 /* HEADER */
 .main-header {
   background: #fff;
@@ -11,6 +15,14 @@
   right: 0;
   z-index: 1000;
   font-family: "Poppins", sans-serif;
+}
+/* Divider*/
+.header-divider{
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, #a88ec3 0%, #b9acd3 50%, #a88ec3 100%);
+  margin: 0 auto;
+  display: block;
 }
 
 /* Full-bleed bar with internal centered region */
