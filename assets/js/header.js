@@ -54,19 +54,29 @@ class Header {
         const currentPath = window.location.pathname;
         const currentPage = currentPath.split('/').pop() || 'index.html';
         
-        // Don't remove active class if it's already correctly set
+        // Get navigation links
         const homeLink = document.querySelector('.navbar-menu a[href*="index.html"]');
         const shopLink = document.querySelector('.navbar-menu a[href*="shop.html"]');
+        const cartLink = document.querySelector('.navbar-menu a[href*="cart.html"]');
+        const cartIcon = document.querySelector('.cart-icon');
+        
+        // Remove active class from all links first
+        [homeLink, shopLink, cartLink].forEach(link => {
+            if (link) link.classList.remove('active');
+        });
+        if (cartIcon) cartIcon.classList.remove('active');
         
         // Add active class based on current page
         if (currentPage === 'index.html' || currentPage === '' || currentPath === '/' || currentPath.endsWith('/')) {
             // Homepage - highlight Home
             if (homeLink) homeLink.classList.add('active');
-            if (shopLink) shopLink.classList.remove('active');
         } else if (currentPage === 'shop.html') {
             // Shop page - highlight Shop
             if (shopLink) shopLink.classList.add('active');
-            if (homeLink) homeLink.classList.remove('active');
+        } else if (currentPage === 'cart.html') {
+            // Cart page - highlight Cart icon
+            if (cartIcon) cartIcon.classList.add('active');
+            if (cartLink) cartLink.classList.add('active'); // Also highlight mobile cart link
         }
     }
 

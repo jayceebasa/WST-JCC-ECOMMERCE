@@ -67,10 +67,10 @@
   color: #111;
 }
 .navbar-brand .logo {
-  height: 150px;
+  height: 50px;
   width: auto;
   object-fit: contain;
-  margin-left: -50px;
+  
 }
 
 /* Right cluster */
@@ -171,6 +171,20 @@
   display: none !important; /* Hide the underline since we have the aura */
 }
 
+/* Active cart icon styling */
+.cart-icon.active {
+  background: rgba(219, 184, 238, 0.651) !important;
+  padding: 8px 12px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 15px rgba(185, 172, 211, 0.5) !important;
+  transition: all 0.3s ease !important;
+  color: #1a093e !important;
+}
+.cart-icon.active:hover {
+  background: rgba(185, 172, 211, 0.35) !important;
+  box-shadow: 0 0 20px rgba(185, 172, 211, 0.6) !important;
+}
+
 /* Adjust when screen narrower: reduce gaps & padding */
 @media (max-width: 1000px) {
   .navbar {
@@ -192,7 +206,7 @@
     gap: 30px;
   }
   .navbar-brand .logo {
-    height: 120px;
+    height: 35px;
   }
   .search-btn {
     font-size: 14px;
@@ -206,7 +220,7 @@
     position: relative;
   }
   .navbar-brand .logo {
-    height: 100px;
+    height: 35px;
   }
 
   /* Hide navbar actions (search and cart) on mobile */

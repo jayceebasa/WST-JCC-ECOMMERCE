@@ -1,8 +1,17 @@
 // Partials loader utility for loading header and footer
 class PartialsLoader {
+    static getBasePath() {
+        // Detect if we're in a subdirectory by checking the current path
+        const currentPath = window.location.pathname;
+        const isInSubdirectory = currentPath.includes('/pages/') || currentPath.split('/').length > 2;
+        return isInSubdirectory ? '../' : '';
+    }
+
     static async loadPartial(partialPath, targetSelector) {
         try {
-            const response = await fetch(partialPath);
+            const basePath = this.getBasePath();
+            const fullPath = basePath + partialPath;
+            const response = await fetch(fullPath);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
