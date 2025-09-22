@@ -99,7 +99,7 @@
 .cart-icon {
   display: inline-flex;
   align-items: center;
-  color: #1a1a1a;
+  color: #1a093e;
   text-decoration: none;
   transition: color 0.18s ease;
 }
@@ -114,8 +114,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 0;
-  color: #1a1a1a;
+  color: #1a093e;
   font-size: 14px;
   transition: color 0.18s ease;
 }
@@ -233,8 +232,8 @@
 
   /* Convert nav menu to mobile dropdown */
   .navbar-menu {
-    position: fixed;
-    top: 64px;
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
     transform: none;
