@@ -1,28 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../assets/css/main.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/header.css" />
     <link rel="stylesheet" href="../assets/css/footer.css" />
     <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
-</head>
-<body>
-  
-  <!-- Header will be loaded here -->
-  <header></header>
-  
+    <link rel="stylesheet" href="../assets/css/cart.css">
+  </head>
+  <body>
+    <!-- Header will be loaded here -->
+    <header></header>
 
-  <!-- Footer will be loaded here -->
-  <footer></footer>
+          <div class="container">
+        <div class="products-section">
+          <div class="product-card">
+            <img
+              class="product-image"
+              src="../assets/images/freepik__the-style-is-candid-image-photography-with-natural__98166.png"
+              alt="Classic White Button-Down Shirt" />
+            <div class="product-details">
+              <h1 class="product-title">Classic White Button-Down Shirt</h1>
+              <p class="product-price">Price: ₱1,499.00</p>
+              <p class="product-color">Color: White</p>
+              <div class="size-selector">
+                <label>Size: </label>
+                <select>
+                  <option>Large</option>
+                  <option>Medium</option>
+                  <option>Small</option>
+                </select>
+              </div>
+            </div>
+            <div class="controls-wrapper">
+              <div class="quantity-section">
+                <button class="quantity-btn" onclick="updateQuantity(1, this)">+</button>
+                <span class="quantity">1</span>
+                <button class="quantity-btn" onclick="updateQuantity(-1, this)">-</button>
+              </div>
+              <button class="delete-btn" onclick="deleteItem(this)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
 
-  <script src="../assets/js/helpers.js"></script>
+          <div class="product-card">
+            <img
+              class="product-image"
+              src="../assets/images/freepik__the-style-is-candid-image-photography-with-natural__98166.png"
+              alt="Classic White Button-Down Shirt"
+              alt="Classic White Button-Down Shirt" />
+            <div class="product-details">
+              <h1 class="product-title">Classic White Button-Down Shirt</h1>
+              <p class="product-price">Price: ₱1,499.00</p>
+              <p class="product-color">Color: White</p>
+              <div class="size-selector">
+                <label>Size: </label>
+                <select>
+                  <option>Large</option>
+                  <option>Medium</option>
+                  <option>Small</option>
+                </select>
+              </div>
+            </div>
+            <div class="controls-wrapper">
+              <div class="quantity-section">
+                <button class="quantity-btn" onclick="updateQuantity(1, this)">+</button>
+                <span class="quantity">1</span>
+                <button class="quantity-btn" onclick="updateQuantity(-1, this)">-</button>
+              </div>
+              <button class="delete-btn" onclick="deleteItem(this)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img
+              class="product-image"
+              src="../assets/images/freepik__the-style-is-candid-image-photography-with-natural__98166.png"
+              alt="Classic White Button-Down Shirt"
+              alt="Classic White Button-Down Shirt" />
+            <div class="product-details">
+              <h1 class="product-title">Classic White Button-Down Shirt</h1>
+              <p class="product-price">Price: ₱1,499.00</p>
+              <p class="product-color">Color: White</p>
+              <div class="size-selector">
+                <label>Size: </label>
+                <select>
+                  <option>Large</option>
+                  <option>Medium</option>
+                  <option>Small</option>
+                </select>
+              </div>
+            </div>
+            <div class="controls-wrapper">
+              <div class="quantity-section">
+                <button class="quantity-btn" onclick="updateQuantity(1, this)">+</button>
+                <span class="quantity">1</span>
+                <button class="quantity-btn" onclick="updateQuantity(-1, this)">-</button>
+              </div>
+              <button class="delete-btn" onclick="deleteItem(this)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img
+              class="product-image"
+              src="../assets/images/freepik__the-style-is-candid-image-photography-with-natural__98166.png"
+              alt="Classic White Button-Down Shirt"
+              alt="Classic White Button-Down Shirt" />
+            <div class="product-details">
+              <h1 class="product-title">Classic White Button-Down Shirt</h1>
+              <p class="product-price">Price: ₱1,499.00</p>
+              <p class="product-color">Color: White</p>
+              <div class="size-selector">
+                <label>Size: </label>
+                <select>
+                  <option>Large</option>
+                  <option>Medium</option>
+                  <option>Small</option>
+                </select>
+              </div>
+            </div>
+            <div class="controls-wrapper">
+              <div class="quantity-section">
+                <button class="quantity-btn" onclick="updateQuantity(1, this)">+</button>
+                <span class="quantity">1</span>
+                <button class="quantity-btn" onclick="updateQuantity(-1, this)">-</button>
+              </div>
+              <button class="delete-btn" onclick="deleteItem(this)">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing Section -->
+        <div class="billing-section">
+          <h2 class="billing-title">Order Summary</h2>
+
+          <div class="billing-breakdown">
+            <h3 class="breakdown-title">Items in Cart</h3>
+            <div id="items-breakdown">
+              <!-- Items will be populated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="billing-subtotal">
+            <div class="billing-row">
+              <span>Subtotal:</span>
+              <span id="subtotal">₱5,996.00</span>
+            </div>
+            <div class="billing-row">
+              <span>Shipping:</span>
+              <span id="shipping">₱150.00</span>
+            </div>
+          </div>
+
+          <div class="billing-row billing-total">
+            <span>Total:</span>
+            <span id="total">₱6,745.60</span>
+          </div>
+          <button class="buy-button" onclick="processPurchase()">Buy Now</button>
+        </div>
+      </div>
+    <!-- Footer will be loaded here -->
+    <footer></footer>
+
+    <script src="../assets/js/helpers.js"></script>
     <!-- javascript for the burger button for the header -->
     <script src="../assets/js/header.js"></script>
     <!-- loads the header and footer from the partials  -->
     <script src="../assets/js/partials-loader.js"></script>
     <script src="../assets/js/main.js"></script>
-</body>
+    <script src="../assets/js/cart.js"></script>
+  </body>
 </html>

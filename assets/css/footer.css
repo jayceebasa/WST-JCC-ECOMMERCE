@@ -133,3 +133,13 @@
     font-size: 13px;
   }
 }
+@media (max-aspect-ratio: 3/4) {
+  .main-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 100;
+  }
+}
