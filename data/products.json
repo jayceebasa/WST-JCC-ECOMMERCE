@@ -1,0 +1,14 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Sample Product",
+      "description": "This is a sample product for demonstration",
+      "price": 29.99,
+      "category": "electronics",
+      "image": "assets/images/products/sample-product.jpg",
+      "inStock": true,
+      "featured": true
+    }
+  ]
+}
