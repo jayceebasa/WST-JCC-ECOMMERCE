@@ -47,7 +47,9 @@ class PartialsLoader {
             
             console.log('Partial loaded successfully');
             
-            // Don't modify paths in the HTML since we're using relative paths in the partial itself
+            // Fix paths based on current location
+            html = this.fixPaths(html, basePath);
+            
             const targetElement = document.querySelector(targetSelector);
             if (targetElement) {
                 targetElement.innerHTML = html;
@@ -57,6 +59,28 @@ class PartialsLoader {
             }
         } catch (error) {
             console.error('Error loading partial:', error);
+        }
+    }
+
+    static fixPaths(html, basePath) {
+        if (basePath === '../') {
+            // We're in pages directory - paths in header.html are already correct
+            return html;
+        } else {
+            // We're in root directory - need to adjust paths from header.html
+            // Fix navigation links
+            html = html.replace(/href="\.\.\/index\.html"/g, 'href="index.html"');
+            
+            // Fix asset paths (images, css, js)
+            html = html.replace(/src="\.\.\/assets\//g, 'src="assets/');
+            html = html.replace(/href="\.\.\/assets\//g, 'href="assets/');
+            
+            // Fix page navigation links - these should point to pages/ directory from root
+            html = html.replace(/href="shop\.html"/g, 'href="pages/shop.html"');
+            html = html.replace(/href="cart\.html"/g, 'href="pages/cart.html"');
+            html = html.replace(/href="singleProduct\.html"/g, 'href="pages/singleProduct.html"');
+            
+            return html;
         }
     }
 
@@ -78,10 +102,16 @@ class PartialsLoader {
 
 // Auto-load header and footer on pages that have the containers
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log('DOM loaded, initializing partials...');
+    
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
     
+    console.log('Header element found:', !!header);
+    console.log('Footer element found:', !!footer);
+    
     if (header) {
+        console.log('Loading header...');
         await PartialsLoader.loadHeader();
         console.log('Header loaded, checking for Header class...');
         
@@ -100,6 +130,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (footer) {
+        console.log('Loading footer...');
         await PartialsLoader.loadFooter();
     }
+    
+    console.log('Partials loading complete');
 });
