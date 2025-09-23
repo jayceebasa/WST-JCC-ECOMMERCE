@@ -3,32 +3,57 @@ class PartialsLoader {
     static getBasePath() {
         // Detect if we're in a subdirectory by checking the current path
         const currentPath = window.location.pathname;
-        const isInSubdirectory = currentPath.includes('/pages/') || currentPath.split('/').length > 2;
-        return isInSubdirectory ? '../' : '';
+        const hostname = window.location.hostname;
+        
+        console.log('Current path:', currentPath);
+        console.log('Hostname:', hostname);
+        
+        // Check if we're on GitHub Pages
+        const isGitHubPages = hostname.includes('github.io');
+        
+        // More robust subdirectory detection
+        const isInPagesFolder = currentPath.includes('/pages/') || 
+                               currentPath.endsWith('/shop.html') || 
+                               currentPath.endsWith('/cart.html') ||
+                               currentPath.endsWith('/singleProduct.html');
+        
+        const basePath = isInPagesFolder ? '../' : '';
+        console.log('Base path determined:', basePath);
+        
+        return basePath;
     }
 
     static async loadPartial(partialPath, targetSelector) {
         try {
             const basePath = this.getBasePath();
             const fullPath = basePath + partialPath;
+            
+            console.log('Attempting to load partial from:', fullPath);
+            
             const response = await fetch(fullPath);
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.error(`Failed to load partial: ${response.status} - ${fullPath}`);
+                // Try fallback path
+                const fallbackPath = '../' + partialPath;
+                console.log('Trying fallback path:', fallbackPath);
+                const fallbackResponse = await fetch(fallbackPath);
+                if (!fallbackResponse.ok) {
+                    throw new Error(`HTTP error! status: ${fallbackResponse.status} for ${fallbackPath}`);
+                }
+                var html = await fallbackResponse.text();
+            } else {
+                var html = await response.text();
             }
-            let html = await response.text();
             
-            // Fix asset paths in the loaded HTML
-            if (basePath) {
-                // We're in a subdirectory, so fix relative paths
-                html = html.replace(/src="assets\//g, 'src="../assets/');
-                html = html.replace(/href="assets\//g, 'href="../assets/');
-                html = html.replace(/href="pages\//g, 'href="../pages/');
-                html = html.replace(/href="index\.html"/g, 'href="../index.html"');
-            }
+            console.log('Partial loaded successfully');
             
+            // Don't modify paths in the HTML since we're using relative paths in the partial itself
             const targetElement = document.querySelector(targetSelector);
             if (targetElement) {
                 targetElement.innerHTML = html;
+                console.log('Partial inserted into DOM');
+            } else {
+                console.error('Target element not found:', targetSelector);
             }
         } catch (error) {
             console.error('Error loading partial:', error);
