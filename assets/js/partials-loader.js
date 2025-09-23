@@ -15,7 +15,17 @@ class PartialsLoader {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const html = await response.text();
+            let html = await response.text();
+            
+            // Fix asset paths in the loaded HTML
+            if (basePath) {
+                // We're in a subdirectory, so fix relative paths
+                html = html.replace(/src="assets\//g, 'src="../assets/');
+                html = html.replace(/href="assets\//g, 'href="../assets/');
+                html = html.replace(/href="pages\//g, 'href="../pages/');
+                html = html.replace(/href="index\.html"/g, 'href="../index.html"');
+            }
+            
             const targetElement = document.querySelector(targetSelector);
             if (targetElement) {
                 targetElement.innerHTML = html;
