@@ -12,7 +12,6 @@ This folder contains all CSS stylesheets for the WST JCC E-Commerce application.
 ## CSS Organization Guidelines
 
 1. **Main.css Structure**
-   - CSS Reset/Normalize
    - Typography
    - Layout (Grid/Flexbox)
    - Components
