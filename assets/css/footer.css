@@ -133,9 +133,10 @@
     font-size: 13px;
   }
 }
-@media (max-aspect-ratio: 3/4) {
-  .main-footer {
 
+@media (max-aspect-ratio: 3/4) and (min-width: 768px) {
+  .main-footer {
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
