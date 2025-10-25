@@ -16,7 +16,6 @@ html, body {
 
 body {
   display: block;
-  min-height: 100vh;
 }
 
 /* Main content area */
@@ -81,7 +80,7 @@ p {
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  min-height: 300px;
+  min-height: 250px;
   height: 60vh;
   max-height: 600px;
 }
@@ -173,6 +172,8 @@ p {
     margin-left: calc(-50vw + 50%);
     box-shadow: none;
     min-height: 250px;
+    height: 60vh;
+    max-height: 400px;
   }
   
   .hero-img {
@@ -220,6 +221,8 @@ p {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     min-height: 220px;
+    height: 60vh;
+    max-height: 600px;
   }
   
   .hero-img {
