@@ -57,8 +57,8 @@
   transition: all 0.2s ease;
   cursor: pointer;
   letter-spacing: 0.3px;
-  width: 120px;
-  min-width: 120px;
+  width: 160px;
+  min-width: 160px;
 }
 
 .filter-select:hover {
@@ -152,17 +152,24 @@
   .shop-header-content {
     justify-content: center;
     position: relative;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .shop-header h1 {
     font-size: 2rem;
+    order: 1;
   }
 
   .filter-select {
-    position: absolute;
-    left: 0;
+    position: static;
+    left: auto;
+    top: auto;
     font-size: 13px;
     padding: 7px 12px;
+    width: 450px;
+    order: 2;
   }
 
   .product-info {
@@ -180,24 +187,35 @@
 
 @media (max-width: 480px) {
   .shop-header {
-    padding: 25px 16px 15px;
+    padding: 20px 16px;
   }
 
   .shop-header-content {
     justify-content: center;
     position: relative;
+    padding-top: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
   .shop-header h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     letter-spacing: 0.02em;
+    margin: 0;
+    word-break: break-word;
+    order: 1;
   }
 
   .filter-select {
-    position: absolute;
-    left: 0;
+    position: static;
+    left: auto;
+    top: auto;
     font-size: 12px;
     padding: 6px 10px;
+    width: 100%;
+    max-width: 300px;
+    order: 2;
   }
 
   .product-card {
