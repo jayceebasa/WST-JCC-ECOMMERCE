@@ -11,41 +11,21 @@ class Header {
     }
 
     setupMobileMenu() {
-        const toggle = document.querySelector('.mobile-toggle');
-        const menu = document.querySelector('.navbar-menu');
-        if (!toggle || !menu) return;
+        // For Bootstrap navbar, the toggle and menu are handled by Bootstrap's JavaScript
+        // We just need to close the menu when a link is clicked
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        
+        if (!navLinks) return;
 
-        // Remove any leftover inline styles / classes from desktop state
-        const closeMenu = () => {
-            menu.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-        };
-        const openMenu = () => {
-            menu.classList.add('open');
-            toggle.setAttribute('aria-expanded', 'true');
-        };
-        const toggleMenu = () => {
-            if (menu.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        };
-        toggle.addEventListener('click', toggleMenu);
-
-        // Close on resize back to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 560) {
-                closeMenu();
-            }
-        });
-
-        // Close when clicking outside menu (mobile only)
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth > 560) return;
-            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-                closeMenu();
-            }
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Close mobile menu after clicking a link
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    navbarToggler.click();
+                }
+            });
         });
     }
 
@@ -54,17 +34,20 @@ class Header {
         const currentPath = window.location.pathname;
         const currentPage = currentPath.split('/').pop() || 'index.html';
         
-        // Get navigation links
-        const homeLink = document.querySelector('.navbar-menu a[href*="index.html"]');
-        const shopLink = document.querySelector('.navbar-menu a[href*="shop.html"]');
-        const cartLink = document.querySelector('.navbar-menu a[href*="cart.html"]');
-        const cartIcon = document.querySelector('.cart-icon');
+        // Get navigation links - updated for Bootstrap navbar structure
+        const homeLink = document.querySelector('.navbar-nav a[href*="index.html"]');
+        const shopLink = document.querySelector('.navbar-nav a[href*="shop.html"]');
         
-        // Remove active class from all links first
-        [homeLink, shopLink, cartLink].forEach(link => {
-            if (link) link.classList.remove('active');
+        // Get all cart icons (desktop and mobile)
+        const cartIcons = document.querySelectorAll('.cart-icon');
+        
+        // Remove active class from all nav links first
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.classList.remove('active');
         });
-        if (cartIcon) cartIcon.classList.remove('active');
+        cartIcons.forEach(icon => {
+            icon.classList.remove('active');
+        });
         
         // Add active class based on current page
         if (currentPage === 'index.html' || currentPage === '' || currentPath === '/' || currentPath.endsWith('/')) {
@@ -74,9 +57,10 @@ class Header {
             // Shop page - highlight Shop
             if (shopLink) shopLink.classList.add('active');
         } else if (currentPage === 'cart.html') {
-            // Cart page - highlight Cart icon
-            if (cartIcon) cartIcon.classList.add('active');
-            if (cartLink) cartLink.classList.add('active'); // Also highlight mobile cart link
+            // Cart page - highlight all cart icons (both desktop and mobile)
+            cartIcons.forEach(icon => {
+                icon.classList.add('active');
+            });
         }
     }
 

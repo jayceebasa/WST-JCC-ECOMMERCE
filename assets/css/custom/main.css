@@ -21,7 +21,7 @@ body {
 
 /* Main content area */
 main {
-  padding: 20px 0;
+  padding: 0px 0 0 0;
   overflow-x: hidden;
 }
 
@@ -82,12 +82,13 @@ p {
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   min-height: 300px;
+  height: 60vh;
+  max-height: 600px;
 }
 
 .hero-img {
   width: 100%;
-  height: 550px;
-  min-height: 300px;
+  height: 100%;
   display: block;
   object-fit: cover;
 }
@@ -147,12 +148,12 @@ p {
   }
   
   main {
-    padding: 20px 0;
+    padding: 0px 0;
   }
   
   /* Hero responsive styles */
   .hero-section {
-    padding: 24px 0 0;
+    padding: 0px 0 0;
   }
   
   .hero-text {
@@ -196,11 +197,11 @@ p {
 
 @media (max-width: 480px) {
   main {
-    padding: 20px 0;
+    padding: 0px 0;
   }
   
   .hero-section {
-    padding: 16px 0 0;
+    padding: 0px 0 0;
   }
   
   .hero-text {
@@ -281,3 +282,152 @@ p {
   }
 }
 
+
+/* ===== BOOTSTRAP COMPATIBILITY & ENHANCEMENTS ===== */
+
+/* Override Bootstrap defaults to maintain custom design */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #1a093e;
+}
+
+/* Ensure custom container works well with Bootstrap */
+.container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+}
+
+/* Bootstrap grid system compatibility */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -12px;
+  margin-left: -12px;
+}
+
+.col, [class*="col-"] {
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+/* Bootstrap button enhancements while maintaining design */
+.btn {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #a88ec3, #b9acd3);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #9a7eb5, #a89cc5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 142, 195, 0.3);
+}
+
+.btn-outline-primary {
+  color: #a88ec3;
+  border: 2px solid #a88ec3;
+}
+
+.btn-outline-primary:hover {
+  background: rgba(168, 142, 195, 0.1);
+  border-color: #9a7eb5;
+  color: #9a7eb5;
+}
+
+/* Form enhancements */
+.form-control {
+  border-color: #e0e0e0;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #a88ec3;
+  box-shadow: 0 0 0 0.2rem rgba(168, 142, 195, 0.25);
+  color: #1a093e;
+}
+
+/* Alert boxes */
+.alert {
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.alert-primary {
+  background-color: rgba(168, 142, 195, 0.1);
+  border-color: #a88ec3;
+  color: #1a093e;
+}
+
+/* Card enhancements */
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Bootstrap utility class overrides */
+.text-primary {
+  color: #a88ec3 !important;
+}
+
+.bg-primary {
+  background-color: #a88ec3 !important;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Responsive utility enhancements */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px !important;
+  }
+  
+  .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  
+  .col, [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px !important;
+  }
+  
+  .row {
+    margin-right: -6px;
+    margin-left: -6px;
+  }
+  
+  .col, [class*="col-"] {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+}
