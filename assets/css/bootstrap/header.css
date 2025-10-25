@@ -202,7 +202,10 @@ html {
     margin-top: 8px !important;
     border-radius: 0 0 8px 8px !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
-    position: relative !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
     z-index: 1001 !important;
     animation: slideDown 0.25s ease-out !important;
 }
@@ -412,6 +415,8 @@ html {
     margin: 0 auto;
     margin-bottom: 25px !important;
     display: block;
+    position: relative;
+    z-index: 1031;
 }
 
 /* Sticky header positioning */
@@ -420,5 +425,5 @@ html {
 }
 
 .main-header {
-    z-index: 1030 !important;
+    z-index: 1031 !important;
 }
