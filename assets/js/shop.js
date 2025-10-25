@@ -46,6 +46,14 @@ function displayProducts(products) {
     `;
     productsGrid.innerHTML += productHTML;
   });
+
+  // Add click event listeners to product cards
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const productId = this.getAttribute('data-product-id');
+      window.location.href = `singleProduct.html?id=${productId}`;
+    });
+  });
 }
 
 // Filter products by category
