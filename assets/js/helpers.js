@@ -23,6 +23,29 @@ const DOM = {
     }
 };
 
+// Update cart badge counter
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    // Use a small delay to ensure badges exist in DOM
+    setTimeout(() => {
+        const badgeMobile = document.getElementById('cartCountBadgeMobile');
+        const badgeDesktop = document.getElementById('cartCountBadgeDesktop');
+        
+        if (badgeMobile) badgeMobile.textContent = totalItems;
+        if (badgeDesktop) badgeDesktop.textContent = totalItems;
+    }, 100);
+}
+
+// Listen for storage changes (updates from other tabs/windows)
+window.addEventListener('storage', updateCartBadge);
+
+// Update badge on page load - with delay to ensure DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(updateCartBadge, 500);
+});
+
 // Format currency
 const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {

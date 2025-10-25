@@ -97,6 +97,11 @@ class PartialsLoader {
             this.loadHeader(),
             this.loadFooter()
         ]);
+        
+        // Update cart badge after header is loaded
+        if (typeof updateCartBadge === 'function') {
+            updateCartBadge();
+        }
     }
 }
 

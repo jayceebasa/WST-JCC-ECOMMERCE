@@ -85,12 +85,20 @@ function addToCart() {
       name: currentProduct.name,
       price: currentProduct.price,
       image: currentProduct.image,
-      quantity: 1
+      quantity: 1,
+      material: currentProduct.material,
+      color: currentProduct.color,
+      fit: currentProduct.fit,
+      sizes: currentProduct.sizes,
+      care: currentProduct.care
     });
   }
 
   // Save cart to localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Update cart badge
+  updateCartBadge();
 
   // Show feedback
   showAddToCartFeedback();

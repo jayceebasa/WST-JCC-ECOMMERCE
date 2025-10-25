@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeApp() {
     console.log('Initializing WST JCC E-Commerce app...');
     
+    // Load header and footer partials
+    if (typeof PartialsLoader !== 'undefined') {
+        PartialsLoader.loadHeaderAndFooter().then(() => {
+            console.log('Header and footer loaded');
+            // Update cart badge after header loads
+            if (typeof updateCartBadge === 'function') {
+                updateCartBadge();
+            }
+        });
+    }
+    
     // Add any initial setup code here
     setupEventListeners();
 }
