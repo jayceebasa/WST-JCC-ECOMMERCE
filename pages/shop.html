@@ -19,8 +19,30 @@
   <body>
     <header></header>
 
+    <main>
+      <div class="shop-container">
+        <!-- Shop Header with Filter -->
+        <div class="shop-header">
+          <div class="shop-header-content">
+            <select id="categoryFilter" class="form-select filter-select">
+              <option value="">All</option>
+              <option value="fashion">Fashion</option>
+              <option value="beauty">Beauty</option>
+              <option value="accessories">Accessories</option>
+            </select>
+            <h1>SHOP</h1>
+          </div>
+          <div class="shop-divider"></div>
+        </div>
 
-
+        <!-- Products Section -->
+        <div class="container">
+          <div class="row" id="productsGrid">
+            <!-- Products will be loaded here dynamically -->
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer></footer>
 
@@ -32,5 +54,7 @@
     <!-- loads the header and footer from the partials  -->
     <script src="../assets/js/partials-loader.js"></script>
     <script src="../assets/js/main.js"></script>
+    <!-- Shop products loader -->
+    <script src="../assets/js/shop.js"></script>
   </body>
 </html>
